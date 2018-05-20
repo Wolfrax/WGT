@@ -24,7 +24,8 @@
     <link rel="stylesheet" href="{{asset "css/bootstrap.min.css"}}"/>
     <link rel="stylesheet" href="{{asset "css/monokai_sublime.css"}}">
     <link rel="stylesheet" href="{{asset "css/default.css"}}">
-<link rel="stylesheet" href="{{asset "css/elusive-icons.min.css"}}">
+    <link rel="stylesheet" href="{{asset "css/elusive-icons.min.css"}}">
+    <link rel="stylesheet" href="{{asset "css/WGT.css"}}">
 
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
@@ -35,7 +36,7 @@
     <!--<link rel="stylesheet" href="{{asset "css/default.css"}}">-->
     
     <script src="{{asset "js/highlight.pack.js"}}"></script>
-  
+
   {{! Page Highlight }}
   {{{block "initHighlight"}}}
 
@@ -87,10 +88,51 @@
 
     <a href="#" class="back-to-top"><span class="fa fa-angle-up fa-2x"></span></a>
 
+    {{! Figure caption hack by MM May 2018 }}
+    <script>
+        // Creates Captions from Alt tags
+        $(".post-content img").each(
+                function () {
+                    // Let's put a caption if there is one
+                    if ($(this).attr("alt")) {
+                        if ($(this).attr("alt").indexOf("Right!") == 0) {
+                            $(this).wrap(
+                                    '<figure class="rightImage"></figure>'
+                            ).after(
+                                    '<figcaption class="caption">' +
+                                    $(this).attr("alt").substring(6) +
+                                    '</figcaption>'
+                            );
+                        }
+                        else if ($(this).attr("alt").indexOf("Left!") == 0) {
+                            $(this).wrap(
+                                    '<figure class="leftImage"></figure>'
+                            ).after(
+                                    '<figcaption class="caption">' +
+                                    $(this).attr("alt").substring(5) +
+                                    '</figcaption>'
+                            );
+                        }
+                        else {
+                            if ($(this).attr("alt")) {
+                                $(this).wrap(
+                                        '<figure class="image"></figure>'
+                                ).after(
+                                        '<figcaption class="caption">' +
+                                        $(this).attr(
+                                                "alt") +
+                                        '</figcaption>'
+                                );
+                            }
+                        }
+                    }
+                });
+    </script>
+
     {{! Ghost outputs important scripts and data with this tag }}
     {{ghost_foot}}
 
-    {{! The main JavaScript file for Casper }}
+{{! The main JavaScript file for Casper }}
     <script src="{{asset "js/modernizr.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
 
