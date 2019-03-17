@@ -1,8 +1,9 @@
 {
-  "name": "Wolfrax-Ghost-Theme (WGT)",
-  "version": "1.0",
+  "name": "wolfrax-ghost-theme",
+  "version": "2.0.0",
   "engines": {
-    "ghost": "^1.0.0"
+    "ghost": ">=1.0.0",
+    "ghost-api": "v2"
   },
   "gpm": {
     "type": "theme",
@@ -17,12 +18,20 @@
       "Personal"
     ]
   },
-  "license":"MIT",
+  "license": "MIT",
   "author": {
-    "name": "Wolfrax Ghost Theme (WGT)",
+    "name": "wolfrax-ghost-theme",
     "email": "mm@viltstigen.se",
     "url": "https://www.viltstigen.se/wolfblog"
   },
-  "demo":"https://www.viltstigen.se/wolfblog",
-  "homepage":"https://github.com/Wolfrax/Wolfrax_Ghost_theme"
+  "demo": "https://www.viltstigen.se/wolfblog",
+  "homepage": "https://github.com/Wolfrax/Wolfrax_Ghost_theme",
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme"
+  ],
+  "config": {
+    "posts_per_page": 25
+  }
 }
